@@ -27,31 +27,27 @@
     firebase.initializeApp(firebaseConfig);
     //const firebase = initializeApp(firebaseConfig);
     //const analytics = getAnalytics(app);
+
     const db = firebase.firestore();
-    db.collection('product').get().then((res)=>{
-      console.log(res);
-      res.forEach((el)=>{
-        console.log(el.data());
-        let div = document.createElement('div');
-        let temp = `
-        <div class="product">
-          <div class="thumbnail" style="background-image: url('https://via.placeholder.com/350')"></div>
-          <div class="flex-grow-1 p-4">
-            <h5 class="title">${el.data().prod_nm}</h5>
-            <p class="date">2030년 1월 8일</p>
-            <p class="price">${el.data().price}원</p>
-            <p class="float-end">♥0</p>
-            </div>
-            </div>`;
-        div.innerHTML = temp;
-        document.querySelector('.container').appendChild(div);
-      })
-    });
+    document.getElementById('send').addEventListener('click',(ev)=>{
+        let title = document.querySelector('#title').value;
+        let price = document.querySelector('#price').value;
+        if(title && price)
+        {
+            db.collection('product').add({prod_nm:title,price:price});
+        }
+        else
+        {
+            alert('상품명과 가격을 입력했는지 확인해주세요!!');
+            return ;
+        }
+    })
+
+
   </script>
 
 </head>
 <body>
-<h1>안녕하세요!!</h1>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">은호장터</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,11 +71,15 @@
   </div>
 </nav>
 <div class="container mt-3">
-</div>
+    <input type="text" class="form-control mt-2" id="title" placeholder="title">
+    <textarea class="form-control mt-2" id="content">content</textarea>
+    <input type="text" class="form-control mt-2" id="price" placeholder="price">
+    <input class="form-control mt-2" type="file" id="image">
+    <button class="btn btn-danger mt-3" id="send">올리기</button>
+  </div>
 </body>
 </html>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <style>
   @import url("src/css/firebase.css");
 </style>
-<script src="src/js/nav/nav.js"></script>
