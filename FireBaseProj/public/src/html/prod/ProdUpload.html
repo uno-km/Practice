@@ -39,8 +39,14 @@
         const formattedDate = `${year}${month}${date} ${hours}${minutes}${seconds}`;
         if(title && price &&content)
         {
-            db.collection('product').add({prod_nm:title,price:price,content:content,cretDt:formattedDate});
-            alert('업로드가 완료되었습니다.');
+            db.collection('product').add({prod_nm:title,price:price,content:content,cretDt:formattedDate}).then((res)=>{
+              console.log(res);
+              alert('업로드가 완료되었습니다.');
+              window.location.href="/index.html";
+            }).catch((e)=>{
+              alert('알 수 없는 에러가 발생했습니다.');
+              console.log(e);
+            });
         }
         else
         {
