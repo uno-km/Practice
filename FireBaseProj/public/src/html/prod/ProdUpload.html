@@ -23,9 +23,13 @@
       measurementId: "G-31H6LG776S"
     };
     firebase.initializeApp(firebaseConfig);
-
     const db = firebase.firestore();
+    const storage = firebase.storage();
+
     document.getElementById('send').addEventListener('click',(ev)=>{
+        let uploadFile = document.querySelector('#image').files[0];
+        const savePath = storage.ref().child('img/'+uploadFile.name);
+        const saveMethod = savePath.put(uploadFile);
         const title = document.querySelector('#title').value;
         const price = document.querySelector('#price').value;
         const content = document.querySelector('#content').value;
