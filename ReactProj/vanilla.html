@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="'btn">click me!!</button>
+    <button id="btn">click me!!</button>
     <span>Tottal clicks : 0</span>
     <script>
         let cnt = 0;
@@ -16,7 +16,7 @@
         btn.addEventListener('click',(ev)=>{
             cnt += 1;
             console.log('clicked');
-            span.innterText = `Total Clickes : ${cnt}`;
+            span.innerText = `Total Clicks : ${cnt}`;
         });
     </script>
 </body>
