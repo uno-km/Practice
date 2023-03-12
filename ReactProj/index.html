@@ -12,15 +12,24 @@
     <div id="root"></div>
     <script>
         const root = document.getElementById('root');
-        const span = React.createElement("span",{
+        const h3 = React.createElement("h3"
+        ,{
             id:"sexy-span"
             ,class:"super-cool"
             ,style:{
                 color:"red"
             }
-        },"Hello World");
-        ReactDOM.render(span,root);
+            ,onMouseEnter: () => console.log('zzz')
+        }
+        ,"Hello World");
+        const button = React.createElement('button'
+        ,{
+            onClick: () =>
+            console.log('qwe'),
+        }
+        ,'Click me');
+        const container = React.createElement('div',null,[h3,button])
+        ReactDOM.render(container,root);
     </script>
-
 </body>
 </html>
