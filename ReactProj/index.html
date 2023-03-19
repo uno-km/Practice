@@ -26,6 +26,7 @@
         }
         ,"Hello World");
         */
+       const H1 = () => {return <h1 style={{color:'red',}}>하위~!!</h1>}
         const Title = () => {
             return <h3 id='title' onMouseEnter={(ev)=>console.log("mouser entered!!")}>Hello I'm a title</h3>
         }
@@ -42,11 +43,14 @@
         }
         ,'Click me');
         /*const container = React.createElement('div',null,[title,Button])*/Button
-        const Container = <div>
-            <Title/>
-            <Button/>
-            </div>
-        ReactDOM.render(Container,root);
+        const Container = ()=> (
+            <div>
+                <h1>하위~!!</h1>
+                <H1/>
+                <Title/>
+                <Button/>
+            </div>)
+        ReactDOM.render(<Container/>,root);
     </script>
 </body>
 </html>
