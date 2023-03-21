@@ -14,34 +14,15 @@
     <div id="root"></div>
     <script type="text/babel" >
         const root = document.getElementById('root');
-       /*
-       const h3 = React.createElement("h3"
-        ,{
-            id:"sexy-span"
-            ,class:"super-cool"
-            ,style:{
-                color:"red"
-            }
-            ,onMouseEnter: () => console.log('zzz')
-        }
-        ,"Hello World");
-        */
        const H1 = () => {return <h1 style={{color:'red',}}>하위~!!</h1>}
-        let counter = 0;
-        let render =()=>{
-            ReactDOM.render(<Container/>,root);
-        }
-        let counteUp = (ev) => {
-            ++counter;
-            render();
-        }
-        const Container = ()=> (
-            <div>
+        const App = ()=> {
+            const [counter, modifier] = React.useState();
+            return (<div>
                 <h1>Total clicks : {counter}</h1>
-                <button onClick={counteUp}>click me</button>
+                <button >click me</button>
                 <H1/>
-            </div>)
-        render();
+            </div>)}
+        ReactDOM.render(<App/>,root);
     </script>
 </body>
 </html>
