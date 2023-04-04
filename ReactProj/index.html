@@ -20,11 +20,12 @@
             const onClick = () => {
                 if(typeof counter === "string")
                 {
-                    setCounter(1);
+                    setCounter((cur) => 1)
                 }
                 else
                 {
-                    setCounter(counter +1);
+                   // setCounter(counter +1);
+                   setCounter((cur) => cur +1)
                 }
             }
             return (
