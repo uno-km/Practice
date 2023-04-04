@@ -16,9 +16,16 @@
         const root = document.getElementById('root');
        const H1 = () => {return <h1 style={{color:'red',}}>하위~!!</h1>}
         const App = ()=> {
-            const [counter, setCounter] = React.useState(0);
+            const [counter, setCounter] = React.useState("버튼을 눌러보세요~!");
             const onClick = () => {
-                setCounter(counter +1);
+                if(typeof counter === "string")
+                {
+                    setCounter(1);
+                }
+                else
+                {
+                    setCounter(counter +1);
+                }
             }
             return (
             <div>
