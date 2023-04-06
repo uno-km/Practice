@@ -18,6 +18,9 @@
         const onChange = (ev) =>{
             setMinutes(ev.target.value);
         }
+        const reset = (ev) => {
+            setMinutes(0);
+        }
         return (
             <div>
                 <h1>Super Converter</h1>
@@ -25,7 +28,8 @@
                 <input id='minutes' value={minutes} placeholder="Minutes" type='number' onChange={onChange}/>
                 <h2>You wanna convert {minutes}</h2>
                 <label for='hours'>Minutes</label>
-                <input id='hours' placeholder="Hours" type='number'/>
+                <input id='hours' value={minutes/60} placeholder="Hours" type='number'/>
+                <button onClick={reset}>reset</button>
             </div>
         )
        }
